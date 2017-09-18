@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cmus Remote</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+<table id="controller">
+    <tr>
+        <td></td>
+        <td>
+            <form action="/play">
+                <input type="submit" value="&#x23ef;">
+            </form>
+        </td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>
+            <form id="previous" class="inline" action="/previous">
+                <input type="submit" value="&#x23ee">
+            </form>
+        </td>
+        <td></td>
+        <td>
+            <form id="next" class="inline" action="/next">
+                <input type="submit" value="&#x23ed">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <form class="inline" action="/rewind">
+                <input type="submit" value="&#x23ea">
+            </form>
+        </td>
+        <td></td>
+        <td>
+            <form class="inline" action="/fastforward">
+                <input type="submit" value="&#x23e9">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <form id="volumeDown" class="inline" action="/volumeDown">
+                <input type="submit" value="&ndash;">
+            </form>
+        </td>
+        <td></td>
+        <td>
+            <form id="volumeUp" class="inline" action="/volumeUp">
+                <input type="submit" value="+">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3">
+            <form action="/shuffle">
+                <input type="submit" value="Shuffle">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3">
+            <form action="/repeat">
+                <input type="submit" value="Repeat">
+            </form>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

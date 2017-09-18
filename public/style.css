@@ -1,0 +1,35 @@
+body{
+    background-color: #333333;
+}
+
+input[type=submit]{
+    padding: 8px;
+    margin: 1px;
+    background: #666666;
+    color: #333333;
+    border-radius:10px;
+    border:0 none;
+    font-size:150%;
+}
+
+input[type=submit]:hover{
+    color: #999999;
+}
+
+#controller{
+    margin: auto;
+    width: 25%;
+    text-align: center;
+}
+
+#hide{
+    display: none;
+}
+
+#volumeDown, #volumeUp{
+    display:inline;
+}
+
+.inline{
+    display: inline;
+}
