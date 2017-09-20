@@ -21,15 +21,3 @@ input[type=submit]:hover{
     width: 25%;
     text-align: center;
 }
-
-#hide{
-    display: none;
-}
-
-#volumeDown, #volumeUp{
-    display:inline;
-}
-
-.inline{
-    display: inline;
-}

@@ -5,6 +5,7 @@
     <title>Cmus Remote</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="client.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body id="body">
 <table id="controller">
@@ -12,7 +13,7 @@
         <td></td>
         <td>
             <form action="/play">
-                <input type="submit" value="&#x23ef;">
+                <input id="play" type="submit" value="&#x23ef;">
             </form>
         </td>
         <td></td>
@@ -20,14 +21,14 @@
 
     <tr>
         <td>
-            <form id="previous" class="inline" action="/previous">
-                <input type="submit" value="&#x23ee">
+            <form class="inline" action="/previous">
+                <input id="previous" type="submit" value="&#x23ee">
             </form>
         </td>
         <td></td>
         <td>
-            <form id="next" class="inline" action="/next">
-                <input type="submit" value="&#x23ed">
+            <form class="inline" action="/next">
+                <input id="next" type="submit" value="&#x23ed">
             </form>
         </td>
     </tr>
@@ -35,27 +36,27 @@
     <tr>
         <td>
             <form class="inline" action="/rewind">
-                <input type="submit" value="&#x23ea">
+                <input id="rewind" type="submit" value="&#x23ea">
             </form>
         </td>
         <td></td>
         <td>
             <form class="inline" action="/fastforward">
-                <input type="submit" value="&#x23e9">
+                <input id="fastforward" type="submit" value="&#x23e9">
             </form>
         </td>
     </tr>
 
     <tr>
         <td>
-            <form id="volumeDown" class="inline" action="/volumeDown">
-                <input type="submit" value="&ndash;">
+            <form class="inline" action="/volumeDown">
+                <input id="volumeDown" type="submit" value="&ndash;">
             </form>
         </td>
         <td></td>
         <td>
-            <form id="volumeUp" class="inline" action="/volumeUp">
-                <input type="submit" value="+">
+            <form class="inline" action="/volumeUp">
+                <input id="volumeUp" type="submit" value="+">
             </form>
         </td>
     </tr>
@@ -63,7 +64,7 @@
     <tr>
         <td colspan="3">
             <form action="/shuffle">
-                <input type="submit" value="Shuffle">
+                <input id="shuffle" type="submit" value="Shuffle">
             </form>
         </td>
     </tr>
@@ -71,7 +72,7 @@
     <tr>
         <td colspan="3">
             <form action="/repeat">
-                <input type="submit" value="Repeat">
+                <input id="repeat" type="submit" value="Repeat">
             </form>
         </td>
     </tr>

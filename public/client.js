@@ -4,32 +4,37 @@ window.onload = function () {
     var body = document.getElementById("body");
     body.addEventListener("keypress", handleKeyPress);
     body.addEventListener("keydown", handleKeyDown);
+};
+
+function handleHotKeys(event, isKeyDown){
+    var keyBinds = (isKeyDown) ? createKeyDownArray() : createKeyBindsArray();
+    var key = event.keyCode;
+    var xmlHttp = new XMLHttpRequest();
+    for(var i = 0; i < keyBinds.length; i++){
+        if(keyBinds[i][0] === key){
+            var command = keyBinds[i][1];
+            var commandElementId = command.substring(1);
+            document.getElementById(commandElementId).style.color = "#999999";
+            xmlHttp.open("GET", command, false);
+            xmlHttp.send(null);
+            setTimeout(function() {revertButtonTextColor(commandElementId);}, 200);
+            return xmlHttp.responseText;
+        }
+    }
 }
 
 function handleKeyPress(event){
-    var key = event.keyCode;
-    var keyBinds = createKeyBindsArray();
-    var xmlHttp = new XMLHttpRequest();
-    for(var i = 0; i < keyBinds.length; i++){
-        if(keyBinds[i][0] === key){
-            xmlHttp.open("GET", keyBinds[i][1], false);
-            xmlHttp.send(null);
-            return xmlHttp.responseText;
-        }
-    }
+    return handleHotKeys(event, false);
 }
 
-function handleKeyDown() {
-    var key = event.keyCode;
-    var keyBinds = createKeyDownArray();
-    var xmlHttp = new XMLHttpRequest();
-    for(var i = 0; i < keyBinds.length; i++){
-        if(keyBinds[i][0] === key){
-            xmlHttp.open("GET", keyBinds[i][1], false);
-            xmlHttp.send(null);
-            return xmlHttp.responseText;
-        }
-    }
+function handleKeyDown(event) {
+    return handleHotKeys(event, true);
+}
+
+function revertButtonTextColor(eleId) {
+    var fontColor = "#333333";
+    var element = document.getElementById(eleId);
+    element.style.color = fontColor;
 }
 
 function createKeyBindsArray(){
@@ -43,7 +48,7 @@ function createKeyBindsArray(){
         [45, "/volumeDown"],//minus
         [61, "/volumeUp"]// + sign
     ];
-    return keyBinds
+    return keyBinds;
 }
 
 function createKeyDownArray(){
@@ -52,6 +57,6 @@ function createKeyDownArray(){
         [39, "/fastforward"],//right arrow
         [38, "/volumeUp"],//up arrow
         [40, "/volumeDown"]//down arrow
-    ]
+    ];
     return keyDownArray;
 }
