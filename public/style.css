@@ -21,3 +21,9 @@ input[type=submit]:hover{
     width: 25%;
     text-align: center;
 }
+
+p{
+    margin:auto;
+    text-align:center;
+    color: #999999;
+}

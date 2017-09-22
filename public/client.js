@@ -1,10 +1,36 @@
-"use strict"
+"use strict";
 
 window.onload = function () {
     var body = document.getElementById("body");
     body.addEventListener("keypress", handleKeyPress);
     body.addEventListener("keydown", handleKeyDown);
+
+    $.get("/songInfo", function(output) {
+        var song = output[0];
+        var album = output[1];
+        var artist = output[2];
+        document.getElementById("song").innerHTML = song;
+        document.getElementById("album").innerHTML = album;
+        document.getElementById("artist").innerHTML = artist;
+    });
+    //Duplicated so we can have one run every 5 seconds to keep updated,
+    //but also have one that loads instantly on page load so the remote doesn't
+    //jump around each time updateSongInfo() is called
+    updateSongInfo();
 };
+
+function updateSongInfo(){
+    setInterval(function(){
+        $.get("/songInfo", function(output){
+            var song = output[0];
+            var album = output[1];
+            var artist = output[2];
+            document.getElementById("song").innerHTML = song;
+            document.getElementById("album").innerHTML = album;
+            document.getElementById("artist").innerHTML = artist;
+        });
+    }, 5000);
+}
 
 function handleHotKeys(event, isKeyDown){
     var keyBinds = (isKeyDown) ? createKeyDownArray() : createKeyBindsArray();

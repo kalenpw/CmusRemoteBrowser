@@ -64,16 +64,36 @@ app.get('/fastforward', function(req, res){
     res.redirect("index.html");
 });
 
+app.get('/songInfo', function(req, res){
+    var cmdSongName = "cmus-remote -Q | sed -n -e 's/^.*tag title //p'";
+    var cmdAlbumName = "cmus-remote -Q | sed -n -e 's/^.*tag album //p'";
+    var cmdArtistName = "cmus-remote -Q | sed -n -e 's/^.*tag artist //p'";
+
+    var song = getCommandOutput(cmdSongName);
+    var album = getCommandOutput(cmdAlbumName);
+    var artist = getCommandOutput(cmdArtistName);
+
+    var songInfo = [song, album, artist];
+
+    res.send(songInfo);
+});
+
 var server = app.listen(8080, function () {
     console.log("Server online");
 });
+
+function getCommandOutput(command){
+    const execSync = require('child_process').execSync;
+    var output = execSync(command);
+    return output.toString();
+}
 
 function handleCommand(command) {
     child = exec(command, function (error, stdout, stderr) {
         // sys.print('Stdout ' + stdout);
         // sys.print('Stderr ' + stderr);
         if (error !== null) {
-            console.log('exec error ' + error);
+            console.log('ERROR: ' + error);
         }
     })
 }
