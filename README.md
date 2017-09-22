@@ -25,4 +25,4 @@ The hotkeys are designed to mimic that of the desktop app
   <li>space toggle play/pause</li>
 </ul>
 
-![Cmus Remote](https://i.imgur.com/snzF81j.png)
+![Cmus Remote](https://i.imgur.com/d7VEInk.png)
