@@ -26,4 +26,6 @@ p{
     margin:auto;
     text-align:center;
     color: #999999;
+    padding: 2px;
+    font-family: Arial, Helvetica, sans-serif;
 }
