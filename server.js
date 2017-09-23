@@ -64,6 +64,11 @@ app.get('/fastforward', function(req, res){
     res.redirect("index.html");
 });
 
+//Returns array with track information
+// Index    Value
+// 0        Track title
+// 1        Album title
+// 2        Artist name
 app.get('/songInfo', function(req, res){
     var cmdSongName = "cmus-remote -Q | sed -n -e 's/^.*tag title //p'";
     var cmdAlbumName = "cmus-remote -Q | sed -n -e 's/^.*tag album //p'";
@@ -76,6 +81,22 @@ app.get('/songInfo', function(req, res){
     var songInfo = [song, album, artist];
 
     res.send(songInfo);
+});
+
+//Returns an array to client with shuffle and repeat information
+// Index      Value
+// 0          Shuffle On?
+// 1          Repeat On?
+app.get("/shuffleRepeat", function(rerq, res){
+    var cmdShuffle = "cmus-remote -Q | sed -n -e 's/^.*set shuffle //p'";
+    var cmdRepeat = "cmus-remote -Q | sed -n -e 's/^.*set repeat //p'";
+
+    var isShuffled = getCommandOutput(cmdShuffle);
+    var isRepeat = getCommandOutput(cmdRepeat);
+
+    var playInfo = [isShuffled, isRepeat];
+
+    res.send(playInfo);
 });
 
 var server = app.listen(8080, function () {

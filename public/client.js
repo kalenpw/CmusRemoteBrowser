@@ -13,6 +13,19 @@ window.onload = function () {
         document.getElementById("album").innerHTML = album;
         document.getElementById("artist").innerHTML = artist;
     });
+
+    $.get("/shuffleRepeat", function(output){
+        var isShuffle = output[0].toString();
+        var isRepeat = output[1].toString();
+
+        //God knows why .includes() works, but === "true" doesn't but oh well
+        var shuffleColor = (isShuffle.includes("true")) ? "#999999" : "#333333";
+        var repeatColor = (isRepeat.includes("true")) ? "#999999" : "#333333";
+
+        document.getElementById("shuffle").style.color = shuffleColor;
+        document.getElementById("repeat").style.color = repeatColor;
+    });
+
     //Duplicated so we can have one run every 5 seconds to keep updated,
     //but also have one that loads instantly on page load so the remote doesn't
     //jump around each time updateSongInfo() is called
