@@ -5,7 +5,7 @@ window.onload = function () {
     body.addEventListener("keypress", handleKeyPress);
     body.addEventListener("keydown", handleKeyDown);
 
-    $.get("/songInfo", function(output) {
+    $.get("/songInfo", function (output) {
         var song = output[0];
         var album = output[1];
         var artist = output[2];
@@ -14,7 +14,7 @@ window.onload = function () {
         document.getElementById("artist").innerHTML = artist;
     });
 
-    $.get("/shuffleRepeat", function(output){
+    $.get("/shuffleRepeat", function (output) {
         var isShuffle = output[0].toString();
         var isRepeat = output[1].toString();
 
@@ -25,6 +25,18 @@ window.onload = function () {
         document.getElementById("shuffle").style.color = shuffleColor;
         document.getElementById("repeat").style.color = repeatColor;
     });
+
+    // $.get("/albumArt", function(output){
+    //     // console.log(output);
+    // });
+
+    // var apiCall = new URL("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=0cfc4bbbd70f2237020eb7a1b4e7fd4f&artist=Cher&album=Believe&format=json");
+    // // console.log(apiCall.toJSON());
+    // var url = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=0cfc4bbbd70f2237020eb7a1b4e7fd4f&artist=Cher&album=Believe&format=json";
+    // var xhmlHttp = new XMLHttpRequest();
+    // xhmlHttp.open("GET", url, false);
+    // xhmlHttp.send(null);
+    // console.log(xhmlHttp.responseXML);
 
     //Duplicated so we can have one run every 5 seconds to keep updated,
     //but also have one that loads instantly on page load so the remote doesn't
