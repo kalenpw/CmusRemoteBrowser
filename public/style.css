@@ -2,7 +2,7 @@ body{
     background-color: #333333;
 }
 
-input[type=submit]{
+button, input[type=submit]{
     padding: 8px;
     margin: 1px;
     background: #666666;

@@ -12,6 +12,7 @@ const GET_ALBUM_NAME = "cmus-remote -Q | sed -n -e 's/^.*tag album //p'";
 const GET_ARTIST_NAME = "cmus-remote -Q | sed -n -e 's/^.*tag artist //p'";
 const GET_SHUFFLE = "cmus-remote -Q | sed -n -e 's/^.*set shuffle //p'";
 const GET_REPEAT = "cmus-remote -Q | sed -n -e 's/^.*set repeat //p'";
+
 module.exports = {
     PAUSE: PAUSE,
     NEXT: NEXT,
@@ -26,5 +27,32 @@ module.exports = {
     GET_ALBUM_NAME: GET_ALBUM_NAME,
     GET_ARTIST_NAME: GET_ARTIST_NAME,
     GET_SHUFFLE: GET_SHUFFLE,
-    GET_REPEAT: GET_REPEAT
+    GET_REPEAT: GET_REPEAT,
+
+    get: function(cmd){
+        switch(cmd){
+            case "play":
+                return PAUSE;
+            case "next":
+                return NEXT;
+            case "previous":
+                return PREVIOUS;
+            case "shuffle":
+                return SHUFFLE;
+            case "repeat":
+                return REPEAT;
+            case "volumeUp":
+                return VOLUME_UP;
+            case "volumeDown":
+                return VOLUME_DOWN;
+            case "fastforward":
+                return FASTFORWARD;
+            case "rewind":
+                return REWIND;
+            default:
+                return null;
+        }
+    }
+
+
 }

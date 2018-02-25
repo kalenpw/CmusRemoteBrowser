@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cmus Remote</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="client.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body id="body">
+<p id="song"></p>
+<p id="album"></p>
+<p id="artist"></p>
+<br/>
+<table id="controller">
+    <tr>
+        <td></td>
+        <td>
+            <form action="/play">
+                <input id="play" type="submit" value="&#x23ef;">
+            </form>
+        </td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>
+            <form class="inline" action="/previous">
+                <input id="previous" type="submit" value="&#x23ee">
+            </form>
+        </td>
+        <td></td>
+        <td>
+            <form class="inline" action="/next">
+                <input id="next" type="submit" value="&#x23ed">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <form class="inline" action="/rewind">
+                <input id="rewind" type="submit" value="&#x23ea">
+            </form>
+        </td>
+        <td></td>
+        <td>
+            <form class="inline" action="/fastforward">
+                <input id="fastforward" type="submit" value="&#x23e9">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <form class="inline" action="/volumeDown">
+                <input id="volumeDown" type="submit" value="&ndash;">
+            </form>
+        </td>
+        <td></td>
+        <td>
+            <form class="inline" action="/volumeUp">
+                <input id="volumeUp" type="submit" value="+">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3">
+            <form action="/shuffle">
+                <input id="shuffle" type="submit" value="Shuffle">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3">
+            <form action="/repeat">
+                <input id="repeat" type="submit" value="Repeat">
+            </form>
+        </td>
+    </tr>
+
+    <form action="/test/asdf">
+        <input type="hidden" name="testOne" value="TestOneValue"/>
+        <input id="test" type="submit" value="Test">
+    </form>
+
+    <img id="albumArt" src="" alt="album art">
+
+</table>
+</body>
+</html>

@@ -4,58 +4,22 @@ var path = require('path');
 var exec = require('child_process').exec;
 var Commands = require('./commands.js');
 var child;
+var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded());
 
-//Routes
-app.get('/', function (req, res){
+app.all('/', function(request, response){
     res.sendFile(path.join(__dirname + '/index.html'));
+    res.send(200);
 });
 
-app.get('/play', function(req, res){
-    // console.log(req);
-    handleCommand(Commands.PAUSE);
-    res.redirect("index.html");
-});
-
-app.get('/next', function(req, res){
-    handleCommand(Commands.NEXT);
-    res.redirect("index.html");
-});
-
-app.get('/previous', function(req,res){
-    handleCommand(Commands.PREVIOUS);
-    res.redirect("index.html");
-});
-
-app.get('/shuffle', function(req, res){
-    handleCommand(Commands.SHUFFLE);
-    res.redirect("index.html");
-});
-
-app.get('/repeat', function(req, res){
-    handleCommand(Commands.REPEAT);
-    res.redirect("index.html");
-});
-
-app.get('/volumeUp', function(req, res){
-    handleCommand(Commands.VOLUME_UP);
-    res.redirect("index.html");
-});
-
-app.get('/volumeDown', function(req, res){
-    handleCommand(Commands.VOLUME_DOWN);
-    res.redirect("index.html");
-});
-
-app.get('/rewind', function(req, res){
-    handleCommand(Commands.REWIND);
-    res.redirect("index.html");
-});
-
-app.get('/fastforward', function(req, res){
-    handleCommand(Commands.FASTFORWARD);
-    res.redirect("index.html");
+app.post('/command', function(request, response){
+    var command = Commands.get(request.body.ID);
+    if(command){
+        handleCommand(command);
+    }
+    response.send("");
 });
 
 //Returns array with track information
@@ -71,13 +35,6 @@ app.get('/songInfo', function(req, res){
     var songInfo = [song, album, artist];
 
     res.send(songInfo);
-});
-
-app.get("/test/:testOne", function(req, res){
-    // console.log(req);
-    // console.log("The res.query is: ");
-    // console.log(req.query);
-    console.log(req.query.testOne);
 });
 
 //Returns an array to client with shuffle and repeat information
@@ -102,7 +59,6 @@ app.get("/albumArt", function(req, res) {
 
 var server = app.listen(8080, function () {
     console.log("Server online");
-    console.log(commands.NEXT);
 });
 
 function getCommandOutput(command){

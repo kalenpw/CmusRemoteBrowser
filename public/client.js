@@ -1,6 +1,28 @@
 "use strict";
 
+
 window.onload = function () {
+    $('button').click(function(){
+        $.ajax({
+            type: 'POST',
+            url: '/command',
+            data: {
+                ID: event.target.id
+            },
+            
+        });
+    });
+
+    //$('#play').click(function(){
+    //    $.post('/play');
+    //});
+
+    //$('#previous').click(function(){
+    //    console.log("Clicked play");
+    //    $.post('/previous');
+    //});
+
+    console.log("Loaded");
     var body = document.getElementById("body");
     body.addEventListener("keypress", handleKeyPress);
     body.addEventListener("keydown", handleKeyDown);

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Cmus Remote</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="client.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body id="body">
 <p id="song"></p>
@@ -17,68 +17,50 @@
     <tr>
         <td></td>
         <td>
-            <form action="/play">
-                <input id="play" type="submit" value="&#x23ef;">
-            </form>
+            <button id="play">&#x23ef;</button>
         </td>
         <td></td>
     </tr>
 
     <tr>
         <td>
-            <form class="inline" action="/previous">
-                <input id="previous" type="submit" value="&#x23ee">
-            </form>
+            <button id="previous">&#x23ee;</button>
         </td>
         <td></td>
         <td>
-            <form class="inline" action="/next">
-                <input id="next" type="submit" value="&#x23ed">
-            </form>
+            <button id="next">&#x23ed;</button>
         </td>
     </tr>
 
     <tr>
         <td>
-            <form class="inline" action="/rewind">
-                <input id="rewind" type="submit" value="&#x23ea">
-            </form>
+            <button id="rewind">&#x23ea;</button>
         </td>
         <td></td>
         <td>
-            <form class="inline" action="/fastforward">
-                <input id="fastforward" type="submit" value="&#x23e9">
-            </form>
+            <button id="fastforward">&#x23e9;</button>
         </td>
     </tr>
 
     <tr>
         <td>
-            <form class="inline" action="/volumeDown">
-                <input id="volumeDown" type="submit" value="&ndash;">
-            </form>
+            <button id="volumeDown">&ndash;</button>
         </td>
         <td></td>
         <td>
-            <form class="inline" action="/volumeUp">
-                <input id="volumeUp" type="submit" value="+">
-            </form>
+            <button id="volumeUp">+</button>
         </td>
     </tr>
 
     <tr>
         <td colspan="3">
-            <form action="/shuffle">
-                <input id="shuffle" type="submit" value="Shuffle">
-            </form>
+            <button id="shuffle">Shuffle</button>
         </td>
     </tr>
 
     <tr>
         <td colspan="3">
-            <form action="/repeat">
-                <input id="repeat" type="submit" value="Repeat">
-            </form>
+            <button id="repeat">Repeat</button>
         </td>
     </tr>
 
